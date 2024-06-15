@@ -9,6 +9,7 @@ return {
       loaded = "",
       not_loaded = "",
     },
+    border = "rounded" -- Change to "single", "double", "solid", "shadow", etc. as desired
   },
 
   performance = {
