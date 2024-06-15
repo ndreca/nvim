@@ -39,6 +39,9 @@ vim.api.nvim_create_autocmd("VimEnter", {
     --if #bufs == 1 and bufs[1].name == "" then
     vim.cmd("NvimTreeFindFile")
     vim.cmd("wincmd p")
+    require("nvchad.term").toggle { pos = "sp", id = "htoggleTerm" }
+    vim.cmd("wincmd p")
+    vim.cmd("stopinsert")
     --:end
   end
 })
