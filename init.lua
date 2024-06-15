@@ -33,6 +33,17 @@ dofile(vim.g.base46_cache .. "statusline")
 
 require "nvchad.autocmds"
 
+vim.api.nvim_create_autocmd("VimEnter", {
+  callback = function()
+    -- local bufs = vim.fn.getbufinfo({buflisted = 1})
+    --if #bufs == 1 and bufs[1].name == "" then
+    vim.cmd("NvimTreeFindFile")
+    vim.cmd("wincmd p")
+    --:end
+  end
+})
+
+
 vim.schedule(function()
   require "mappings"
 end)

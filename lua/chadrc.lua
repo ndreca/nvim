@@ -5,7 +5,7 @@
 local M = {}
 
 M.ui = {
-  theme = "flexoki-light",
+  theme = "flexoki",
   theme_toggle = { "flexoki", "flexoki-light" },
   transparency = true,
   cmp = {
