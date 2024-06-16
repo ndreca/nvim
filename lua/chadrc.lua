@@ -5,8 +5,8 @@
 local M = {}
 
 M.ui = {
-  theme = "flexoki",
-  theme_toggle = { "flexoki", "flexoki-light" },
+  theme = "material-darker",
+  theme_toggle = { "material-darker", "material-lighter" },
   transparency = true,
   cmp = {
     icons = true,
