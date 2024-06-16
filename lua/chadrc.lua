@@ -5,8 +5,8 @@
 local M = {}
 
 M.ui = {
-  theme = "material-darker",
-  theme_toggle = { "material-darker", "material-lighter" },
+  theme = "catppuccin",
+  theme_toggle = { "catppuccin", "penumbra_light" },
   transparency = true,
   cmp = {
     icons = true,
@@ -19,7 +19,7 @@ M.ui = {
     theme = "default", -- default/vscode/vscode_colored/minimal
     -- default/round/block/arrow separators work only for default statusline theme
     -- round and block will work for minimal theme only
-    separator_style = "default",
+    separator_style = "block",
     order = nil,
     modules = nil,
   },
