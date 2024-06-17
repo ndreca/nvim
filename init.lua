@@ -37,17 +37,16 @@ vim.api.nvim_create_autocmd("VimEnter", {
   callback = function()
     -- local bufs = vim.fn.getbufinfo({buflisted = 1})
     --if #bufs == 1 and bufs[1].name == "" then
-    vim.cmd("NvimTreeFindFile")
-    vim.cmd("wincmd p")
+    vim.cmd "NvimTreeFindFile"
+    vim.cmd "wincmd p"
     -- require("nvchad.term").toggle { pos = "sp", id = "htoggleTerm" }
     -- vim.cmd("wincmd p")
-    vim.cmd("stopinsert")
+    vim.cmd "stopinsert"
     require("base46").load_all_highlights()
     vim.api.nvim_exec_autocmds("User", { pattern = "NvChadThemeReload" })
     --:end
-  end
+  end,
 })
-
 
 vim.schedule(function()
   require "mappings"

@@ -5,13 +5,13 @@
 local M = {}
 
 M.ui = {
-  theme = "catppuccin",
+  theme = "penumbra_light",
   theme_toggle = { "catppuccin", "penumbra_light" },
   transparency = true,
   cmp = {
     icons = true,
     lspkind_text = true,
-    style = "default",                  -- default/flat_light/flat_dark/atom/atom_colored
+    style = "default", -- default/flat_light/flat_dark/atom/atom_colored
   },
   telescope = { style = "borderless" }, -- borderless / bordered
   ------------------------------- nvchad_ui modules -----------------------------
