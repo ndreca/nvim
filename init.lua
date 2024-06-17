@@ -42,6 +42,8 @@ vim.api.nvim_create_autocmd("VimEnter", {
     -- require("nvchad.term").toggle { pos = "sp", id = "htoggleTerm" }
     -- vim.cmd("wincmd p")
     vim.cmd("stopinsert")
+    require("base46").load_all_highlights()
+    vim.api.nvim_exec_autocmds("User", { pattern = "NvChadThemeReload" })
     --:end
   end
 })
