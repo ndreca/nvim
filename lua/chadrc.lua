@@ -4,10 +4,12 @@
 ---@type ChadrcConfig
 local M = {}
 
-M.ui = {
+M.base46 = {
   theme = "catppuccin",
   theme_toggle = { "catppuccin", "penumbra_light" },
   transparency = true,
+}
+M.ui = {
   cmp = {
     icons = true,
     lspkind_text = true,
