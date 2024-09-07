@@ -19,13 +19,6 @@ return {
   {
     "williamboman/mason.nvim",
     opts = {
-      ensure_installed = {
-        "lua-language-server",
-        "stylua",
-        "html-lsp",
-        "css-lsp",
-        "prettier",
-      },
       ui = {
         border = "rounded", -- You can also use "single", "double", "solid", "shadow", etc.
       },
