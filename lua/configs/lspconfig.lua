@@ -1,31 +1,22 @@
 require("nvchad.configs.lspconfig").defaults()
 
-local on_attach = require("nvchad.configs.lspconfig").on_attach
-local on_init = require("nvchad.configs.lspconfig").on_init
-local capabilities = require("nvchad.configs.lspconfig").capabilities
+local nvlsp = require("nvchad.configs.lspconfig")
+local on_attach = nvlsp.on_attach
+local on_init = nvlsp.on_init
+local capabilities = nvlsp.capabilities
 
-local lspconfig = require "lspconfig"
-local servers = { "html", "cssls", "sourcekit" }
+local servers = { "html", "cssls", "sourcekit", "ts_ls" }
 
--- lsps with default config
-for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup {
+for _, name in ipairs(servers) do
+  vim.lsp.config[name] = vim.tbl_deep_extend("force", vim.lsp.config[name] or {}, {
     on_attach = on_attach,
     on_init = on_init,
     capabilities = capabilities,
-  }
+  })
 end
 
--- typescript
-lspconfig.ts_ls.setup {
-  on_attach = on_attach,
-  on_init = on_init,
-  capabilities = capabilities,
-}
+vim.lsp.config.sourcekit = vim.tbl_deep_extend("force", vim.lsp.config.sourcekit or {}, {
+  root_markers = { "compile_commands.json", ".git" },
+})
 
-lspconfig.sourcekit.setup {
-  root_dir = lspconfig.util.root_pattern("compile_commands.json", ".git") or vim.loop.os_homedir(),
-  on_attach = on_attach,
-  on_init = on_init,
-  capabilities = capabilities,
-}
+vim.lsp.enable(servers)
