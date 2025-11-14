@@ -8,34 +8,29 @@ return {
       "nvim-tree/nvim-web-devicons",
       "3rd/image.nvim",
       "nvim-neo-tree/neo-tree.nvim",
-      "nvim-tree/nvim-tree.lua",         -- (optional) to manage project files
-      "stevearc/oil.nvim",               -- (optional) to manage project files
-      "nvim-treesitter/nvim-treesitter", -- (optional) for Quick tests support (required Swift parser)
-      "mfussenegger/nvim-dap",           -- (optional) for Debugging support
-      "nvim-neotest/nvim-nio",           -- (optional) for Quick tests support
-      "rcarriga/nvim-dap-ui",            -- (optional) for Debugging support
+      "nvim-tree/nvim-tree.lua",
+      "stevearc/oil.nvim",
+      "nvim-treesitter/nvim-treesitter",
+      "mfussenegger/nvim-dap",
+      "nvim-neotest/nvim-nio",
+      "rcarriga/nvim-dap-ui",
     },
     config = function()
-      require("xcodebuild").setup({
-        -- put some options here or leave it empty to use default settings
-      })
-      local xcodebuild = require("xcodebuild.integrations.dap")
-      -- SAMPLE PATH, change it to your local codelldb path
-      local codelldbPath = os.getenv("HOME") .. "/tools/codelldb-aarch64-darwin/extension/adapter/codelldb"
+      require("xcodebuild").setup({})
 
-      xcodebuild.setup(codelldbPath)
+      local xcodebuild = require("xcodebuild.integrations.dap")
+      xcodebuild.setup()          -- or xcodebuild.setup(false) to not load saved breakpoints
 
       vim.keymap.set("n", "<leader>dd", xcodebuild.build_and_debug, { desc = "Build & Debug" })
       vim.keymap.set("n", "<leader>dr", xcodebuild.debug_without_build, { desc = "Debug Without Building" })
       vim.keymap.set("n", "<leader>dt", xcodebuild.debug_tests, { desc = "Debug Tests" })
       vim.keymap.set("n", "<leader>dT", xcodebuild.debug_class_tests, { desc = "Debug Class Tests" })
-      vim.keymap.set("n", "<leader>b", xcodebuild.toggle_breakpoint, { desc = "Toggle Breakpoint" })
-      vim.keymap.set("n", "<leader>B", xcodebuild.toggle_message_breakpoint, { desc = "Toggle Message Breakpoint" })
+      vim.keymap.set("n", "<leader>b",  xcodebuild.toggle_breakpoint, { desc = "Toggle Breakpoint" })
+      vim.keymap.set("n", "<leader>B",  xcodebuild.toggle_message_breakpoint, { desc = "Toggle Message Breakpoint" })
       vim.keymap.set("n", "<leader>dx", xcodebuild.terminate_session, { desc = "Terminate Debugger" })
 
-      vim.keymap.set("n", "<leader>X", "<cmd>XcodebuildPicker<cr>", { desc = "Show Xcodebuild Actions" })
-      vim.keymap.set("n", "<leader>xf", "<cmd>XcodebuildProjectManager<cr>",
-        { desc = "Show Project Manager Actions" })
+      vim.keymap.set("n", "<leader>X",  "<cmd>XcodebuildPicker<cr>", { desc = "Show Xcodebuild Actions" })
+      vim.keymap.set("n", "<leader>xf", "<cmd>XcodebuildProjectManager<cr>", { desc = "Show Project Manager Actions" })
 
       vim.keymap.set("n", "<leader>xb", "<cmd>XcodebuildBuild<cr>", { desc = "Build Project" })
       vim.keymap.set("n", "<leader>xB", "<cmd>XcodebuildBuildForTesting<cr>", { desc = "Build For Testing" })
@@ -48,8 +43,7 @@ return {
 
       vim.keymap.set("n", "<leader>xl", "<cmd>XcodebuildToggleLogs<cr>", { desc = "Toggle Xcodebuild Logs" })
       vim.keymap.set("n", "<leader>xc", "<cmd>XcodebuildToggleCodeCoverage<cr>", { desc = "Toggle Code Coverage" })
-      vim.keymap.set("n", "<leader>xC", "<cmd>XcodebuildShowCodeCoverageReport<cr>",
-        { desc = "Show Code Coverage Report" })
+      vim.keymap.set("n", "<leader>xC", "<cmd>XcodebuildShowCodeCoverageReport<cr>", { desc = "Show Code Coverage Report" })
       vim.keymap.set("n", "<leader>xe", "<cmd>XcodebuildTestExplorerToggle<cr>", { desc = "Toggle Test Explorer" })
       vim.keymap.set("n", "<leader>xs", "<cmd>XcodebuildFailingSnapshots<cr>", { desc = "Show Failing Snapshots" })
 
@@ -60,6 +54,6 @@ return {
       vim.keymap.set("n", "<leader>xx", "<cmd>XcodebuildQuickfixLine<cr>", { desc = "Quickfix Line" })
       vim.keymap.set("n", "<leader>xa", "<cmd>XcodebuildCodeActions<cr>", { desc = "Show Code Actions" })
     end,
-    event = "VimEnter"
+    event = "VimEnter",
   },
 }
